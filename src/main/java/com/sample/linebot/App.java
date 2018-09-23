@@ -15,17 +15,17 @@ import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
-        System.out.println("hello-line!!");
+        System.out.println("MY_LOG:hello-line!!");
     }
 
     @EventMapping
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
-        System.out.println("event: " + event);
-        return new TextMessage(event.getMessage().getText());
+        System.out.println("MY_LOG:event: " + event);
+        return new TextMessage(event.getMessage().getText() + " : thanks!");
     }
 
     @EventMapping
     public void handleDefaultMessageEvent(Event event) {
-        System.out.println("event: " + event);
+        System.out.println("MY_LOG:event: " + event);
     }
 }
