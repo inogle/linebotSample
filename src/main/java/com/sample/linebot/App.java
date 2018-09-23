@@ -24,8 +24,8 @@ public class App {
         return new TextMessage(event.getMessage().getText() + " : thanks!");
     }
 
-    @EventMapping
-    public void handleDefaultMessageEvent(Event event) {
-        System.out.println("MY_LOG:event: " + event);
-    }
+//    @EventMapping
+//    public void handleDefaultMessageEvent(Event event) {
+//        System.out.println("MY_LOG:event: " + event);
+//    }
 }
