@@ -15,7 +15,7 @@ import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
-        System.out.println("hello");
+        System.out.println("hello-line!!");
     }
 
     @EventMapping
