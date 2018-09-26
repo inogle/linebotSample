@@ -12,7 +12,7 @@ public class ScheduledTaskService {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(cron="${cron.cron1}", zone = "Asia/Tokyo")
+    @Scheduled(cron="${cron.cron3}", zone = "Asia/Tokyo")
     public void executeAlarm() throws URISyntaxException {
         //プッシュする処理を呼び出す
 		pushAlarm();
