@@ -16,9 +16,9 @@ import com.linecorp.bot.model.response.BotApiResponse;
 @RestController
 public class PushConfirmController {
 
-    private final LineMessagingClient lineMessagingClient;
+    private LineMessagingClient lineMessagingClient;
 
-    PushConfirmController(LineMessagingClient lineMessagingClient) {
+    public PushConfirmController(LineMessagingClient lineMessagingClient) {
         this.lineMessagingClient = lineMessagingClient;
     }
 
@@ -28,7 +28,7 @@ public class PushConfirmController {
 
         try {
             BotApiResponse response = lineMessagingClient
-                                            .pushMessage(new PushMessage("/* プッシュしたい人のuserId */",
+                                            .pushMessage(new PushMessage("/* inogle */",
                                                          new TemplateMessage("明日は燃えるごみの日だよ！",
                                                                  new ConfirmTemplate("ごみ捨ては終わった？",
                                                                          new MessageAction("はい", "はい"),
@@ -41,4 +41,6 @@ public class PushConfirmController {
             throw new RuntimeException(e);
         }
     }
+    
+    
 }
