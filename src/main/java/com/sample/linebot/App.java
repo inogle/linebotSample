@@ -2,6 +2,7 @@ package com.sample.linebot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.linecorp.bot.model.event.Event;
 import com.linecorp.bot.model.event.MessageEvent;
@@ -12,6 +13,7 @@ import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
 @SpringBootApplication
 @LineMessageHandler
+@EnableScheduling
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -24,8 +26,8 @@ public class App {
         return new TextMessage(event.getMessage().getText() + " : thanks!");
     }
 
-//    @EventMapping
-//    public void handleDefaultMessageEvent(Event event) {
-//        System.out.println("MY_LOG:event: " + event);
-//    }
+    @EventMapping
+    public void handleDefaultMessageEvent(Event event) {
+        System.out.println("MY_LOG:defaultevent: " + event);
+    }
 }
