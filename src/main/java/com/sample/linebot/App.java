@@ -23,6 +23,10 @@ public class App {
     @EventMapping
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("MY_LOG:event: " + event);
+        if("いいえ".equals(event.getMessage().getText()))
+        	return new TextMessage("持てや");
+        if("はい".equals(event.getMessage().getText()))
+        	return new TextMessage("それが良い");
         return new TextMessage(event.getMessage().getText() + " : thanks!");
     }
 

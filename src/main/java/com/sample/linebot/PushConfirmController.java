@@ -28,8 +28,8 @@ public class PushConfirmController {
         try {
             BotApiResponse response = lineMessagingClient
                                             .pushMessage(new PushMessage("Ue3f058707d9179ae8df54a07888dd1aa",
-                                                         new TemplateMessage("明日は燃えるごみの日だよ！",
-                                                                 new ConfirmTemplate("ごみ捨ては終わった？",
+                                                         new TemplateMessage("今日の降水確率は1000%だよ！",
+                                                                 new ConfirmTemplate("今日の降水確率は1000%だよ！傘持った？",
                                                                          new MessageAction("はい", "はい"),
                                                                          new MessageAction("いいえ", "いいえ")
                                                                  )
