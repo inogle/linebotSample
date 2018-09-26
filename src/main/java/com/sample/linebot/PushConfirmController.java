@@ -25,7 +25,6 @@ public class PushConfirmController {
     //リマインドをプッシュ
     @GetMapping("alarm")
     public void pushAlarm() throws URISyntaxException {
-
         try {
             BotApiResponse response = lineMessagingClient
                                             .pushMessage(new PushMessage("Ue3f058707d9179ae8df54a07888dd1aa",
@@ -44,3 +43,17 @@ public class PushConfirmController {
     
     
 }
+
+// 一応動確用CURL
+//curl -X POST \
+//-H 'Content-Type:application/json' \
+//-H 'Authorization: Bearer lLt3OgiwUVo9gnfUkL2PK+DJDutDdEjFqqUEdTRr26bm505diQhqiPX5EEdPMdk3fLWgx9S47UhDkNrt5nW4ar7WsN54eye4QXDC1t/QHxEsgExb/e9Q9hPZ70/oIXhEs4W952/aTwXCj9ZHpL0brgdB04t89/1O/w1cDnyilFU=' \
+//-d '{
+//    "to": "Ue3f058707d9179ae8df54a07888dd1aa",
+//    "messages":[
+//        {
+//        "type": "text",
+//        "text": "新大陸へようこそ"
+//    }
+//    ]
+//}' https://api.line.me/v2/bot/message/push
