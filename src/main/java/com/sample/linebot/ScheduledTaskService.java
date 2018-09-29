@@ -17,7 +17,7 @@ public class ScheduledTaskService {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(cron="${cron.cron3}", zone = "Asia/Tokyo")
+    @Scheduled(cron="${cron.cron4}", zone = "Asia/Tokyo")
     public void executeAlarm() throws URISyntaxException {
     	RainfallForcastHttpClient rainRateClient = new RainfallForcastHttpClient();
     	String rainRate = null;
