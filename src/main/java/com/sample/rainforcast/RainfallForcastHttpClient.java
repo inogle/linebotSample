@@ -39,11 +39,11 @@ public class RainfallForcastHttpClient {
 		return responseData;
 	}
 	
-	@Test //動作検証用メソッド
-	public void testtsat() throws JsonProcessingException {
-		System.out.println("Wao!!");
-		System.out.println(getTodayPrecipProbability());
-	}
+//	@Test //動作検証用メソッド
+//	public void testtsat() throws JsonProcessingException {
+//		System.out.println("Wao!!");
+//		System.out.println(getTodayPrecipProbability());
+//	}
 
 
 }
