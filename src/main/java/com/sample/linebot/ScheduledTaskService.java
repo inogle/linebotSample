@@ -6,8 +6,10 @@ import java.text.SimpleDateFormat;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.LineMessagingClientBuilder;
+import com.sample.rainforcast.RainfallForcastHttpClient;
 
 //@Slf4j
 @Service
@@ -17,6 +19,14 @@ public class ScheduledTaskService {
 
     @Scheduled(cron="${cron.cron3}", zone = "Asia/Tokyo")
     public void executeAlarm() throws URISyntaxException {
+    	RainfallForcastHttpClient rainRateClient = new RainfallForcastHttpClient();
+    	String rainRate = null;
+    	try {
+			rainRate = rainRateClient.getTodayPrecipProbability();
+		} catch (JsonProcessingException e) {
+			System.out.println("MYLOG: failed to get rain pripability");
+		}
+    	
         //プッシュする処理を呼び出す
     	System.out.println("MYLOG: start execute alarm");
     	LineMessagingClient client = 
@@ -25,6 +35,9 @@ public class ScheduledTaskService {
     	
     	PushConfirmController controller = new PushConfirmController(client);
     	System.out.println("MYLOG: built client");
-    	controller.pushAlarm();
+    	if(!(rainRate == null)) {
+    		controller.pushAlarm(rainRate);
+    	}
+    	controller.pushAlarm("1000");
     }
 }

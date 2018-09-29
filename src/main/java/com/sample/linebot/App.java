@@ -26,7 +26,7 @@ public class App {
         if("いいえ".equals(event.getMessage().getText()))
         	return new TextMessage("持てや");
         if("はい".equals(event.getMessage().getText()))
-        	return new TextMessage("それが良い");
+        	return new TextMessage("それで良い");
         return new TextMessage(event.getMessage().getText() + " : thanks!");
     }
 

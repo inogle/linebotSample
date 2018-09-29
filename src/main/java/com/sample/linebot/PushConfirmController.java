@@ -24,18 +24,19 @@ public class PushConfirmController {
 
     //リマインドをプッシュ
     @GetMapping("alarm")
-    public void pushAlarm() throws URISyntaxException {
+    public void pushAlarm(String rainProbability) throws URISyntaxException {
+    	
         try {
             BotApiResponse response = lineMessagingClient
                                             .pushMessage(new PushMessage("Ue3f058707d9179ae8df54a07888dd1aa",
-                                                         new TemplateMessage("今日の降水確率は1000%だよ！",
-                                                                 new ConfirmTemplate("今日の降水確率は1000%だよ！傘持った？",
+                                                         new TemplateMessage("今日の降水確率",
+                                                                 new ConfirmTemplate("今日の降水確率は" + rainProbability + "%だよ！傘持った？",
                                                                          new MessageAction("はい", "はい"),
                                                                          new MessageAction("いいえ", "いいえ")
                                                                  )
                                                          )))
                                             .get();
-            System.out.println("MYLOG: Sent messages: {}" + response);
+            System.out.println("MYLOG: Sent messages: " + response);
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
