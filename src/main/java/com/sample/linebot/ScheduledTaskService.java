@@ -27,17 +27,25 @@ public class ScheduledTaskService {
 			System.out.println("MYLOG: failed to get rain pripability");
 		}
     	
-        //プッシュする処理を呼び出す
-    	System.out.println("MYLOG: start execute alarm");
-    	LineMessagingClient client = 
-    			new LineMessagingClientBuilder("lLt3OgiwUVo9gnfUkL2PK+DJDutDdEjFqqUEdTRr26bm505diQhqiPX5EEdPMdk3fLWgx9S47UhDkNrt5nW4ar7WsN54eye4QXDC1t/QHxEsgExb/e9Q9hPZ70/oIXhEs4W952/aTwXCj9ZHpL0brgdB04t89/1O/w1cDnyilFU=")
-    			.build();
     	
-    	PushConfirmController controller = new PushConfirmController(client);
-    	System.out.println("MYLOG: built client");
-    	if(!(rainRate == null)) {
-    		controller.pushAlarm(rainRate);
+    	//プッシュする処理を呼び出す
+		System.out.println("MYLOG: start execute alarm");
+		LineMessagingClient client = 
+				new LineMessagingClientBuilder("lLt3OgiwUVo9gnfUkL2PK+DJDutDdEjFqqUEdTRr26bm505diQhqiPX5EEdPMdk3fLWgx9S47UhDkNrt5nW4ar7WsN54eye4QXDC1t/QHxEsgExb/e9Q9hPZ70/oIXhEs4W952/aTwXCj9ZHpL0brgdB04t89/1O/w1cDnyilFU=")
+				.build();
+		
+		PushConfirmController controller = new PushConfirmController(client);
+    	
+    	if((rainRate == null)) {
+    		controller.pushAlarm("unknown");
+    	} else {
+    		int rateNumber = Integer.valueOf(rainRate);
+    		if(rateNumber < 30) {
+    			controller.pushAlarm("low rate");
+    		} else {
+    			System.out.println("MYLOG: built client");
+    			controller.pushAlarm(rainRate);
+    		}
     	}
-    	controller.pushAlarm("1000");
     }
 }
