@@ -2,8 +2,6 @@ package com.sample.rainforcast;
 
 import java.io.IOException;
 
-import org.junit.Test;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sample.rainforcast.dto.RainForcastDto;
 
