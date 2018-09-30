@@ -20,9 +20,14 @@ public class App {
         System.out.println("MY_LOG:hello-line!!");
     }
 
+
     @EventMapping
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("MY_LOG:event: " + event);
+        if("天気".equals(event.getMessage().getText())) {
+        	ScheduledTaskService sevices = new ScheduledTaskService();
+        	return sevices.executeAlarm();
+        }
         if("いいえ".equals(event.getMessage().getText()))
         	return new TextMessage("持てや");
         if("はい".equals(event.getMessage().getText()))

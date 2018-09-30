@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.LineMessagingClientBuilder;
+import com.linecorp.bot.model.message.TextMessage;
 import com.sample.rainforcast.RainfallForcastHttpClient;
 
 //@Slf4j
@@ -17,16 +18,9 @@ public class ScheduledTaskService {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(cron="${cron.cron4}", zone = "Asia/Tokyo")
-    public void executeAlarm() throws URISyntaxException {
-    	RainfallForcastHttpClient rainRateClient = new RainfallForcastHttpClient();
-    	String rainRate = null;
-    	try {
-			rainRate = rainRateClient.getTodayPrecipProbability();
-		} catch (JsonProcessingException e) {
-			System.out.println("MYLOG: failed to get rain pripability");
-		}
-    	
+    @Scheduled(cron="${cron.cron3}", zone = "Asia/Tokyo")
+    public void scheduledAlarm() throws URISyntaxException {
+    	String rainRate = getRainProbability();
     	
     	//プッシュする処理を呼び出す
 		System.out.println("MYLOG: start execute alarm");
@@ -48,4 +42,19 @@ public class ScheduledTaskService {
     		}
     	}
     }
+    public TextMessage executeAlarm() {
+    	String rainRate = getRainProbability();
+		return new TextMessage("今日の降水確率は" + rainRate + "%だよ！");
+    }
+
+	private String getRainProbability() {
+		RainfallForcastHttpClient rainRateClient = new RainfallForcastHttpClient();
+    	String rainRate = null;
+    	try {
+			rainRate = rainRateClient.getTodayPrecipProbability();
+		} catch (JsonProcessingException e) {
+			System.out.println("MYLOG: failed to get rain pripability");
+		}
+		return rainRate;
+	}
 }
