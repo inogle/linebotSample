@@ -2,6 +2,8 @@ package com.sample.rainforcast;
 
 import java.io.IOException;
 
+//import org.junit.Test;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sample.rainforcast.dto.RainForcastDto;
 
@@ -30,6 +32,7 @@ public class RainfallForcastHttpClient {
 		try {
 			response = client.newCall(request).execute();
 			responseJson = response.body().string();
+			System.out.println("MY_LOG: get json is " + responseJson);
 			responseData = JsonConverterUtil.fromJsonString(responseJson);
 		} catch (IOException e) {
 			e.printStackTrace();

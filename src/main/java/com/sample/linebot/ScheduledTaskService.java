@@ -18,7 +18,7 @@ public class ScheduledTaskService {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(cron="${cron.cron3}", zone = "Asia/Tokyo")
+    @Scheduled(cron="${cron.cron4}", zone = "Asia/Tokyo")
     public void scheduledAlarm() throws URISyntaxException {
     	String rainRate = getRainProbability();
     	
@@ -42,6 +42,7 @@ public class ScheduledTaskService {
     		}
     	}
     }
+    
     public TextMessage executeAlarm() {
     	String rainRate = getRainProbability();
 		return new TextMessage("今日の降水確率は" + rainRate + "%だよ！");
