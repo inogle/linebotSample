@@ -3,6 +3,7 @@ package com.sample.weatherforcast;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sample.common.Constants;
@@ -45,7 +46,7 @@ public class ForcastPrecipProbabilityService {
 	private String calculateMaxProbability(WeatherForcastDto dto) {
 		double maxPrecipProbability = 0.00;
 		Currently[] hourWeather = dto.getHourly().getData();
-		Calendar calendar = Calendar.getInstance();
+		Calendar calendar = Calendar.getInstance(Locale.JAPAN);
 		
 		int startPoint = 0;
 		int endPoint = 0;
