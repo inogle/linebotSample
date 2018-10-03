@@ -24,8 +24,14 @@ public class App {
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("MY_LOG:event: " + event);
         if("天気".equals(event.getMessage().getText())) {
+        	System.out.println("MY_LOG: call getTodayPrecipProbability()");
         	ScheduledTaskService sevices = new ScheduledTaskService();
-        	return sevices.executeAlarm();
+        	return sevices.getTodayPrecipProbability();
+        }
+        if("天気トレース".equals(event.getMessage().getText())) {
+        	System.out.println("MY_LOG: call tracePrecipProbability()");
+        	ScheduledTaskService sevices = new ScheduledTaskService();
+        	return sevices.tracePrecipProbability();
         }
         if("要らんわ。".equals(event.getMessage().getText()))
         	return new TextMessage("後悔してもしらんで。");

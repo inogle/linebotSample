@@ -71,6 +71,17 @@ public class ForcastPrecipProbabilityService {
 		int rate = (int) (100 * maxPrecipProbability);
 		return Integer.toString(rate);
 	}
+
+	public String getTracePrecipProbability(StringBuilder builder) {
+		System.out.println("MYLOG: start getTodayPrecipProbability()");
+		WeatherForcastDto dto = getWeatherData();
+		Currently[] hourWeather = dto.getHourly().getData();
+		for(int i = 0;i < 24; i++) {
+			builder.append(i +" prob is:" + Double.toString(100 * hourWeather[i].getPrecipProbability()) + "\n");
+		}
+		System.out.println("MYLOG: end getTracePrecipProbability() prob is " + builder.toString());
+		return builder.toString();
+	}
 	
 //	@Test //動作検証用メソッド
 //	public void testtsat() throws JsonProcessingException {

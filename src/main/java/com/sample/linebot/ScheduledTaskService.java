@@ -40,11 +40,6 @@ public class ScheduledTaskService {
 		controller.pushAlarm(rainRate);
 		System.out.println("MYLOG: finish alart" + new Date());
     }
-    
-    public TextMessage executeAlarm() {
-    	String rainRate = getRainProbability();
-		return new TextMessage("今日の降水確率は" + rainRate + "%だよ！");
-    }
 
 	private String getRainProbability() {
 		ForcastPrecipProbabilityService precipPribabilityService = new ForcastPrecipProbabilityService();
@@ -55,5 +50,17 @@ public class ScheduledTaskService {
 			System.out.println("MYLOG: failed to get rain propability");
 		}
 		return precipPribability;
+	}
+	
+    public TextMessage getTodayPrecipProbability() {
+    	String rainRate = getRainProbability();
+		return new TextMessage("今日の降水確率は" + rainRate + "%だよ！");
+    }
+
+	public TextMessage tracePrecipProbability() {
+		ForcastPrecipProbabilityService precipPribabilityService = new ForcastPrecipProbabilityService();
+    	StringBuilder builder = new StringBuilder();
+    	String textMessage = precipPribabilityService.getTracePrecipProbability(builder);
+		return new TextMessage(textMessage);
 	}
 }
