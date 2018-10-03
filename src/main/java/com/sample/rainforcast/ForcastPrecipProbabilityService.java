@@ -2,8 +2,6 @@ package com.sample.rainforcast;
 
 import java.io.IOException;
 
-import org.junit.Test;
-
 //import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -59,9 +57,9 @@ public class ForcastPrecipProbabilityService {
 	}
 
 	
-	@Test //動作検証用メソッド
-	public void testtsat() throws JsonProcessingException {
-		System.out.println("Wao!!");
-		System.out.println(getTodayPrecipProbability());
-	}
+//	@Test //動作検証用メソッド
+//	public void testtsat() throws JsonProcessingException {
+//		System.out.println("Wao!!");
+//		System.out.println(getTodayPrecipProbability());
+//	}
 }
