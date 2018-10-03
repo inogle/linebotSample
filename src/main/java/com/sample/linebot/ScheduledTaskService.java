@@ -1,6 +1,7 @@
 package com.sample.linebot;
 
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,18 +22,23 @@ public class ScheduledTaskService {
     	String rainRate = getRainProbability();
     	
     	//プッシュする処理を呼び出す
-		System.out.println("MYLOG: start execute alarm");
+		System.out.println("MYLOG: execute alart" + new Date());
 		
 		PushConfirmController controller = new PushConfirmController();
     	
     	if((StringUtils.isEmpty(rainRate))) {
     		controller.pushAlarm("unknown");
+    		System.out.println("MYLOG: alart non" + new Date());
     		return;
     	}
 		
-		if(Integer.valueOf(rainRate) < 30) return;
+		if(Integer.valueOf(rainRate) < 30) {
+			System.out.println("MYLOG: failed to get rain pripability" + new Date());
+			return;
+		}
 		
 		controller.pushAlarm(rainRate);
+		System.out.println("MYLOG: finish alart" + new Date());
     }
     
     public TextMessage executeAlarm() {
