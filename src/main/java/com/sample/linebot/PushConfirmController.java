@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.linecorp.bot.client.LineMessagingClient;
+import com.linecorp.bot.client.LineMessagingClientBuilder;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.action.MessageAction;
 import com.linecorp.bot.model.message.TemplateMessage;
@@ -15,12 +16,12 @@ import com.linecorp.bot.model.response.BotApiResponse;
 
 @RestController
 public class PushConfirmController {
-
-    private LineMessagingClient lineMessagingClient;
-
-    public PushConfirmController(LineMessagingClient lineMessagingClient) {
-        this.lineMessagingClient = lineMessagingClient;
-    }
+	// TODO 降水確率を適切な時間で取得する(8 ~ 23)
+	// TODO クライアント実装部分をスレッドセーフにしたい。
+	// TODO 住所をユーザ毎に格納出来るようにしたい WANT
+	// TODO テスト追加
+    private LineMessagingClient lineMessagingClient = new LineMessagingClientBuilder("lLt3OgiwUVo9gnfUkL2PK+DJDutDdEjFqqUEdTRr26bm505diQhqiPX5EEdPMdk3fLWgx9S47UhDkNrt5nW4ar7WsN54eye4QXDC1t/QHxEsgExb/e9Q9hPZ70/oIXhEs4W952/aTwXCj9ZHpL0brgdB04t89/1O/w1cDnyilFU=")
+			.build();
 
     //リマインドをプッシュ
     @GetMapping("alarm")
