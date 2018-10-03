@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.junit.Test;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sample.common.Constants;
 import com.sample.darkskyapi.dto.Currently;
@@ -87,9 +85,9 @@ public class ForcastPrecipProbabilityService {
 		return builder.toString();
 	}
 	
-	@Test //動作検証用メソッド
-	public void testtsat() throws JsonProcessingException {
-		System.out.println("Wao!!");
-		System.out.println(getTodayPrecipProbability());
-	}
+//	@Test //動作検証用メソッド
+//	public void testtsat() throws JsonProcessingException {
+//		System.out.println("Wao!!");
+//		System.out.println(getTodayPrecipProbability());
+//	}
 }
