@@ -17,7 +17,7 @@ import com.sample.weatherforcast.ForcastPrecipProbabilityService;
 public class ScheduledTaskService {
 	
 	
-    @Scheduled(cron="${cron.cron5}", zone = "Asia/Tokyo")
+    @Scheduled(cron="${cron.cron2}", zone = "Asia/Tokyo")
     public void scheduledAlarm() throws URISyntaxException, InterruptedException, ExecutionException {
     	String rainRate = getRainProbability();
     	

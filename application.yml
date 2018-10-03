@@ -2,12 +2,10 @@ line.bot:
   channel-token: 'lLt3OgiwUVo9gnfUkL2PK+DJDutDdEjFqqUEdTRr26bm505diQhqiPX5EEdPMdk3fLWgx9S47UhDkNrt5nW4ar7WsN54eye4QXDC1t/QHxEsgExb/e9Q9hPZ70/oIXhEs4W952/aTwXCj9ZHpL0brgdB04t89/1O/w1cDnyilFU='
   channel-secret: '1c29d2b1fd25e49358984d127f42eeb7'
   handler.path: /callback
-cron:
-  cron1: 0 0 9-18 * * 1-5
-  cron2: 0 */2 * * * *
-  cron3: # for use
+cron: # crons for scheduling
+  cron1: # for using
     0 0 7-20 * * 1-5
-  cron4: # for monitoring
+  cron2: # for monitoring
     0 0,30 * * * *
-  cron5: # for developing
+  cron3: # for developing
     0 * * * * *
