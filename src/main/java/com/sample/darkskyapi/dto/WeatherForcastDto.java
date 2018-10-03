@@ -1,8 +1,8 @@
-package com.sample.rainforcast.dto;
+package com.sample.darkskyapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RainForcastDto {
+public class WeatherForcastDto {
  private double latitude;
  private double longitude;
  private String timezone;

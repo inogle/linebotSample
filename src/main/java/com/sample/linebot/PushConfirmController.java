@@ -1,49 +1,44 @@
 package com.sample.linebot;
 
-import java.net.URISyntaxException;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.linecorp.bot.client.LineMessagingClient;
-import com.linecorp.bot.client.LineMessagingClientBuilder;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.action.MessageAction;
 import com.linecorp.bot.model.message.TemplateMessage;
 import com.linecorp.bot.model.message.template.ConfirmTemplate;
 import com.linecorp.bot.model.response.BotApiResponse;
+import com.sample.common.Constants;
 
 @RestController
 public class PushConfirmController {
-	// TODO 降水確率を適切な時間で取得する(8 ~ 23)
-	// TODO クライアント実装部分をスレッドセーフにしたい。
-	// TODO 住所をユーザ毎に格納出来るようにしたい WANT
-	// TODO テスト追加
-    private LineMessagingClient lineMessagingClient = new LineMessagingClientBuilder("lLt3OgiwUVo9gnfUkL2PK+DJDutDdEjFqqUEdTRr26bm505diQhqiPX5EEdPMdk3fLWgx9S47UhDkNrt5nW4ar7WsN54eye4QXDC1t/QHxEsgExb/e9Q9hPZ70/oIXhEs4W952/aTwXCj9ZHpL0brgdB04t89/1O/w1cDnyilFU=")
-			.build();
+	// TODO 住所をユーザ毎に格納出来るようにしたい
+	// TODO ロジック部分テスト追加
+	
+    private LineMessagingClient lineMessagingClient;
 
     //リマインドをプッシュ
     @GetMapping("alarm")
-    public void pushAlarm(String rainProbability) throws URISyntaxException {
+    public void pushAlarm(String rainProbability) throws InterruptedException, ExecutionException {
+    	lineMessagingClient = LineMessagingClientSingleton.getInstance().createLineMessagingClient();
     	
-        try {
-            BotApiResponse response = lineMessagingClient
-                                            .pushMessage(new PushMessage("Ue3f058707d9179ae8df54a07888dd1aa",
-                                                         new TemplateMessage("今日の降水確率",
-                                                                 new ConfirmTemplate("今日の降水確率は" + rainProbability + "%だよ！傘持った？",
-                                                                         new MessageAction("はい", "はい"),
-                                                                         new MessageAction("いいえ", "いいえ")
-                                                                 )
-                                                         )))
-                                            .get();
-            System.out.println("MYLOG: Sent messages: " + response);
-        } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
-        }
+
+        BotApiResponse response = 
+        		lineMessagingClient
+                    .pushMessage(new PushMessage(Constants.lineUserId,
+                                 new TemplateMessage("今日の降水確率",
+                                         new ConfirmTemplate("今日の降水確率は" + rainProbability + "%だよ！傘持った？",
+                                                 new MessageAction("はい", "持ちました！"),
+                                                 new MessageAction("いいえ", "要らんわ。")
+                                         )
+                                 )))
+                    .get();
+        System.out.println("MYLOG: Sent messages: " + response);
+
     }
-    
-    
 }
 
 // 一応動確用CURL

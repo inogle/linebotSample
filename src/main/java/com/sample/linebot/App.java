@@ -27,10 +27,10 @@ public class App {
         	ScheduledTaskService sevices = new ScheduledTaskService();
         	return sevices.executeAlarm();
         }
-        if("いいえ".equals(event.getMessage().getText()))
-        	return new TextMessage("持てや");
-        if("はい".equals(event.getMessage().getText()))
-        	return new TextMessage("それで良い");
+        if("要らんわ。".equals(event.getMessage().getText()))
+        	return new TextMessage("後悔してもしらんで。");
+        if("持ちました！".equals(event.getMessage().getText()))
+        	return new TextMessage("よぉし…(ご満悦)");
         
         return new TextMessage(event.getMessage().getText() + " : thanks!");
     }

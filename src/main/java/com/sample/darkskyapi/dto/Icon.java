@@ -1,4 +1,4 @@
-package com.sample.rainforcast.dto;
+package com.sample.darkskyapi.dto;
 
 import java.io.IOException;
 import com.fasterxml.jackson.annotation.*;

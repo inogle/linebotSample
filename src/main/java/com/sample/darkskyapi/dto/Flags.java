@@ -1,4 +1,4 @@
-package com.sample.rainforcast.dto;
+package com.sample.darkskyapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,11 +1,11 @@
-package com.sample.rainforcast.dto;
+package com.sample.darkskyapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Daily {
+public class Minutely {
     private String summary;
-    private PrecipTypeEnum icon;
-    private DailyDatum[] data;
+    private Icon icon;
+    private MinutelyDatum[] data;
 
     @JsonProperty("summary")
     public String getSummary() { return summary; }
@@ -13,13 +13,12 @@ public class Daily {
     public void setSummary(String value) { this.summary = value; }
 
     @JsonProperty("icon")
-    public PrecipTypeEnum getIcon() { return icon; }
+    public Icon getIcon() { return icon; }
     @JsonProperty("icon")
-    public void setIcon(PrecipTypeEnum value) { this.icon = value; }
+    public void setIcon(Icon value) { this.icon = value; }
 
     @JsonProperty("data")
-    public DailyDatum[] getData() { return data; }
+    public MinutelyDatum[] getData() { return data; }
     @JsonProperty("data")
-    public void setData(DailyDatum[] value) { this.data = value; }
+    public void setData(MinutelyDatum[] value) { this.data = value; }
 }
-
