@@ -5,6 +5,9 @@ line.bot:
 cron:
   cron1: 0 0 9-18 * * 1-5
   cron2: 0 */2 * * * *
-  cron3: 0 0 9-20 * * 1-5
-  cron4: 0 0,15,30,50 * * * *
-  cron5: 0 * * * * *
+  cron3: # for use
+    0 0 7-20 * * 1-5
+  cron4: # for monitoring
+    0 0,30 * * * *
+  cron5: # for developing
+    0 * * * * *
