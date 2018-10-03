@@ -28,12 +28,12 @@ public class ScheduledTaskService {
     	
     	if((StringUtils.isEmpty(rainRate))) {
     		controller.pushAlarm("unknown");
-    		System.out.println("MYLOG: alart non" + new Date());
+    		System.out.println("MYLOG: failed to get rain propability");
     		return;
     	}
 		
 		if(Integer.valueOf(rainRate) < 30) {
-			System.out.println("MYLOG: failed to get rain pripability" + new Date());
+			System.out.println("MYLOG: precip propability is lower. non alert" + new Date());
 			return;
 		}
 		
@@ -52,7 +52,7 @@ public class ScheduledTaskService {
     	try {
 			precipPribability = precipPribabilityService.getTodayPrecipProbability();
 		} catch (JsonProcessingException e) {
-			System.out.println("MYLOG: failed to get rain pripability");
+			System.out.println("MYLOG: failed to get rain propability");
 		}
 		return precipPribability;
 	}

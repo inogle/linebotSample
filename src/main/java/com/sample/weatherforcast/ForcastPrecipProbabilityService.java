@@ -18,8 +18,11 @@ public class ForcastPrecipProbabilityService {
 	private OkHttpClient httpClient;
 	
 	public String getTodayPrecipProbability() throws JsonProcessingException {
+		System.out.println("MYLOG: start getTodayPrecipProbability()");
 		WeatherForcastDto dto = getWeatherData();
-		return calculateMaxProbability(dto);
+		String precipProbability = calculateMaxProbability(dto);
+		System.out.println("MYLOG: end getTodayPrecipProbability() prob is " + precipProbability);
+		return precipProbability;
 	}
 	
 	private WeatherForcastDto getWeatherData() {

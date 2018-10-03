@@ -23,8 +23,8 @@ public class PushConfirmController {
     //リマインドをプッシュ
     @GetMapping("alarm")
     public void pushAlarm(String rainProbability) throws InterruptedException, ExecutionException {
+    	System.out.println("MYLOG: start pushAlarm()");
     	lineMessagingClient = LineMessagingClientSingleton.getInstance().createLineMessagingClient();
-    	
 
         BotApiResponse response = 
         		lineMessagingClient
@@ -36,8 +36,7 @@ public class PushConfirmController {
                                          )
                                  )))
                     .get();
-        System.out.println("MYLOG: Sent messages: " + response);
-
+        System.out.println("MYLOG: end pushAlarm(). message is : " + response);
     }
 }
 
