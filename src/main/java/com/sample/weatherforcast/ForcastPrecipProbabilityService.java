@@ -2,6 +2,9 @@ package com.sample.weatherforcast;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
+
+import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sample.common.Constants;
@@ -56,14 +59,15 @@ public class ForcastPrecipProbabilityService {
 		} else if(calendar.get(Calendar.HOUR_OF_DAY) < Constants.overtime) {
 			endPoint = Constants.overtime - calendar.get(Calendar.HOUR_OF_DAY);
 		}
-//		System.out.println("現在時間：" + calendar.get(Calendar.HOUR_OF_DAY));
-//		System.out.println("検索範囲：" + startPoint + "~" + endPoint);
+		System.out.println("現在時間：" + calendar.get(Calendar.HOUR_OF_DAY));
+		System.out.println("検索範囲：" + startPoint + "~" + endPoint);
 		
 		for(int i = 0;i < 24; i++) {
-//			System.out.println("time is:" + new Date(hourWeather[i].getTime() * 1000));
+			System.out.println("time is:" + new Date(hourWeather[i].getTime() * 1000));
 			if(i >= startPoint && i <= endPoint) {
-//				System.out.println(i +" prob is:" + hourWeather[i].getPrecipProbability());
+				System.out.println(i +" prob is:" + hourWeather[i].getPrecipProbability());
 				if(hourWeather[i].getPrecipProbability() > maxPrecipProbability) {
+					System.out.println("max is changed to " + hourWeather[i].getPrecipProbability());
 					maxPrecipProbability = hourWeather[i].getPrecipProbability();
 				}
 			}
@@ -73,19 +77,19 @@ public class ForcastPrecipProbabilityService {
 	}
 
 	public String getTracePrecipProbability(StringBuilder builder) {
-		System.out.println("MYLOG: start getTodayPrecipProbability()");
+		System.out.println("MYLOG: start getTracePrecipProbability()");
 		WeatherForcastDto dto = getWeatherData();
 		Currently[] hourWeather = dto.getHourly().getData();
 		for(int i = 0;i < 24; i++) {
-			builder.append(i +" prob is:" + Double.toString(100 * hourWeather[i].getPrecipProbability()) + "\n");
+			builder.append(i +" prob is:" + Integer.toString((int)(100 * hourWeather[i].getPrecipProbability())) + "\n");
 		}
 		System.out.println("MYLOG: end getTracePrecipProbability() prob is " + builder.toString());
 		return builder.toString();
 	}
 	
-//	@Test //動作検証用メソッド
-//	public void testtsat() throws JsonProcessingException {
-//		System.out.println("Wao!!");
-//		System.out.println(getTodayPrecipProbability());
-//	}
+	@Test //動作検証用メソッド
+	public void testtsat() throws JsonProcessingException {
+		System.out.println("Wao!!");
+		System.out.println(getTodayPrecipProbability());
+	}
 }
