@@ -3,58 +3,58 @@ package com.sample.darkskyapi.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Currently {
-    private long time;
-    private String summary;
-    private Icon icon;
-    private Long nearestStormDistance;
-    private Long nearestStormBearing;
-    private double precipIntensity;
-    private double precipProbability;
-    private double temperature;
-    private double apparentTemperature;
-    private double dewPoint;
-    private double humidity;
-    private double pressure;
-    private double windSpeed;
-    private double windGust;
-    private long windBearing;
-    private double cloudCover;
-    private long uvIndex;
-    private double visibility;
-    private double ozone;
-    private Icon precipType;
+  private long time;
+  private String summary;
+  private Icon icon;
+  private Long nearestStormDistance;
+  private Long nearestStormBearing;
+  private double precipIntensity;
+  private double precipProbability;
+  private double temperature;
+  private double apparentTemperature;
+  private double dewPoint;
+  private double humidity;
+  private double pressure;
+  private double windSpeed;
+  private double windGust;
+  private long windBearing;
+  private double cloudCover;
+  private long uvIndex;
+  private double visibility;
+  private double ozone;
+  private Icon precipType;
 
-    @JsonProperty("time")
-    public long getTime() { return time; }
-    @JsonProperty("time")
-    public void setTime(long value) { this.time = value; }
+  @JsonProperty("time")
+  public long getTime() { return time; }
+  @JsonProperty("time")
+  public void setTime(long value) { this.time = value; }
 
-    @JsonProperty("summary")
-    public String getSummary() { return summary; }
-    @JsonProperty("summary")
-    public void setSummary(String value) { this.summary = value; }
+  @JsonProperty("summary")
+  public String getSummary() { return summary; }
+  @JsonProperty("summary")
+  public void setSummary(String value) { this.summary = value; }
 
-    @JsonProperty("icon")
-    public Icon getIcon() { return icon; }
-    @JsonProperty("icon")
-    public void setIcon(Icon value) { this.icon = value; }
+  @JsonProperty("icon")
+  public Icon getIcon() { return icon; }
+  @JsonProperty("icon")
+  public void setIcon(Icon value) { this.icon = value; }
 
-    @JsonProperty("nearestStormDistance")
-    public Long getNearestStormDistance() { return nearestStormDistance; }
-    @JsonProperty("nearestStormDistance")
-    public void setNearestStormDistance(Long value) { this.nearestStormDistance = value; }
+  @JsonProperty("nearestStormDistance")
+  public Long getNearestStormDistance() { return nearestStormDistance; }
+  @JsonProperty("nearestStormDistance")
+  public void setNearestStormDistance(Long value) { this.nearestStormDistance = value; }
 
-    @JsonProperty("nearestStormBearing")
-    public Long getNearestStormBearing() { return nearestStormBearing; }
-    @JsonProperty("nearestStormBearing")
-    public void setNearestStormBearing(Long value) { this.nearestStormBearing = value; }
+  @JsonProperty("nearestStormBearing")
+  public Long getNearestStormBearing() { return nearestStormBearing; }
+  @JsonProperty("nearestStormBearing")
+  public void setNearestStormBearing(Long value) { this.nearestStormBearing = value; }
 
-    @JsonProperty("precipIntensity")
-    public double getPrecipIntensity() { return precipIntensity; }
-    @JsonProperty("precipIntensity")
-    public void setPrecipIntensity(double value) { this.precipIntensity = value; }
+  @JsonProperty("precipIntensity")
+  public double getPrecipIntensity() { return precipIntensity; }
+  @JsonProperty("precipIntensity")
+  public void setPrecipIntensity(double value) { this.precipIntensity = value; }
 
-    @JsonProperty("precipProbability")
+  @JsonProperty("precipProbability")
     public double getPrecipProbability() { return precipProbability; }
     @JsonProperty("precipProbability")
     public void setPrecipProbability(double value) { this.precipProbability = value; }
